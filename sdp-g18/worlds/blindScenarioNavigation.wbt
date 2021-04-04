@@ -1,0 +1,88 @@
+#VRML_SIM R2021a utf8
+WorldInfo {
+  info [
+    "Pedestrian Simulation"
+  ]
+  title "Autonomous Vehicle"
+  ERP 0.6
+  basicTimeStep 10
+  coordinateSystem "NUE"
+  lineScale 1
+  contactProperties [
+    ContactProperties {
+      softCFM 0.0003
+    }
+  ]
+}
+Viewpoint {
+  orientation -0.00927055658215508 -0.8894459161229472 -0.45694640722175295 3.1479489521399344
+  position -1.189522823139938 22.584317779980157 -13.744859115278818
+  near 1
+  follow "blindMan"
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+BlindMan {
+  translation 0 1.26 0
+  controllerArgs [
+    "--caneMovement=1"
+    "--trajectory=0 0, 0 10"
+  ]
+  shirtColor 0 0.666667 0
+  rightHandSlot [
+    Solid {
+      translation 0.03 -0.407587 0.416899
+      rotation 1 0 0 -0.785395307179586
+      children [
+        RobotisLds01 {
+          translation 0 0.19677584802891301 0.007070478029781002
+          rotation -1 0 2.992358938513885e-23 -0.9162996938995749
+        }
+        Shape {
+          appearance PBRAppearance {
+            metalness 0
+          }
+          geometry DEF cane Cylinder {
+            height 1.4
+            radius 0.01
+          }
+        }
+      ]
+    }
+  ]
+}
+DEF _ Floor {
+  size 500 500
+  appearance Parquetry {
+    type "dark strip"
+  }
+}
+Pedestrian {
+  translation -15 1.27 15
+  rotation 0 1 0 2.0944
+  shirtColor 1 0 0
+}
+Pedestrian {
+  translation -8.06957 1.27 12.1229
+  rotation 0 1 0 2.0944
+  name "pedestrian(1)"
+  shirtColor 0 0 1
+}
+Pedestrian {
+  translation -6.65276 1.27 11.4511
+  rotation 0 1 0 -1.5707953071795862
+  name "pedestrian(2)"
+  shirtColor 0 0 1
+}
+Pedestrian {
+  translation 6.6 1.27 5
+  rotation 0 1 0 -1.5707953071795862
+  name "pedestrian(4)"
+  controllerArgs [
+    "--speed=2"
+    "--trajectory=6.6 5, -100 5"
+  ]
+  shirtColor 1 1 0
+}
